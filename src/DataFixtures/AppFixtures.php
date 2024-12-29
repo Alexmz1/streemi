@@ -69,10 +69,11 @@ class AppFixtures extends Fixture
     protected function createSubscriptions(ObjectManager $manager, array &$users, array &$subscriptions): void
     {
         $array = [
-            ['name' => 'Free', 'duration' => 1, 'price' => 0],
-            ['name' => 'Basic', 'duration' => 3, 'price' => 5],
-            ['name' => 'Standard', 'duration' => 6, 'price' => 10],
-            ['name' => 'Premium', 'duration' => 12, 'price' => 15],
+            ['name' => 'Free', 'duration' => 1, 'price' => 0, 'description' => 'Free subscription'],
+            ['name' => 'Basic', 'duration' => 3, 'price' => 5, 'description' => 'Basic subscription'],
+            ['name' => 'Standard', 'duration' => 6, 'price' => 10, 'description' => 'Standard subscription'],
+            ['name' => 'Premium', 'duration' => 12, 'price' => 15, 'description' => 'Premium subscription'],
+            ['name' => 'VIP', 'duration' => 24, 'price' => 20, 'description' => 'VIP subscription'],
         ];
 
         foreach ($array as $item) {
@@ -80,6 +81,7 @@ class AppFixtures extends Fixture
             $subscription->setName($item['name']);
             $subscription->setDurationInMonths($item['duration']);
             $subscription->setPrice($item['price']);
+            $subscription->setDescription($item['description']);
 
             $manager->persist($subscription);
             $subscriptions[] = $subscription;
